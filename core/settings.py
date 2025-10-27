@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -54,8 +54,8 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [BASE_DIR / 'templates'],  # carpeta global
+        'APP_DIRS': True,  # permite buscar dentro de cada app
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
@@ -65,6 +65,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
@@ -77,9 +78,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sistema_boletos',
         'USER': 'boleto_user',
-        'PASSWORD': '1234',
+        'PASSWORD': '2003',
         'HOST': 'localhost',
         'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
     }
 }
 
