@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'qr_scanner',
 ]
 
 MIDDLEWARE = [
@@ -70,17 +71,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
-# Database
+# Conexión a la base de datos
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sistema_boletos',
-        'USER': 'boleto_user',
-        'PASSWORD': '2003',
+        'USER': 'root', #Cambiar por su usuario de mysql
+        'PASSWORD': '2003', #Cambiar por su contraseña de mysql
         'HOST': 'localhost',
-        'PORT': '3306',
+        'PORT': '3306', #cambiar si es necesario
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         }
